@@ -4,25 +4,33 @@ Talisia POS is a comprehensive desktop application built with Electron that prov
 
 ## Installation & Setup
 
-### Prerequisites
+### Desktop Application
+1. Download the latest release of Talisia POS desktop application from the [GitHub Releases](https://github.com/your-repo/releases) page
+2. Choose the appropriate installer for your operating system (Windows, macOS, or Linux)
+3. Run the installer and follow the installation wizard
+
+### API Setup (Required for Full Functionality)
+The API is required for the desktop application to function properly. Follow these steps to set up the API:
+
+#### Prerequisites
 - Docker Desktop installed on your system
   - Download from [Docker Desktop](https://www.docker.com/products/docker-desktop)
   - Ensure Docker Desktop is running before proceeding
 
-### Running the Application
+#### Running the API
 1. Clone this repository to your local machine
 2. Navigate to the project directory
 3. Rename `.env.example` to `.env`:
    ```bash
    mv .env.example .env
    ```
-4. Start the application using Docker Compose:
+4. Start the API using Docker Compose:
    ```bash
    docker-compose up
    ```
 
-### Stopping the Application
-To stop the application, press `Ctrl+C` in the terminal or run:
+#### Stopping the API
+To stop the API, press `Ctrl+C` in the terminal or run:
 ```bash
 docker-compose down
 ```
