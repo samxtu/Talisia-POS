@@ -2,6 +2,31 @@
 
 Talisia POS is a comprehensive desktop application built with Electron that provides a complete solution for retail businesses. It combines point-of-sale functionality with inventory management, employee management, and advanced reporting capabilities.
 
+## Installation & Setup
+
+### Prerequisites
+- Docker Desktop installed on your system
+  - Download from [Docker Desktop](https://www.docker.com/products/docker-desktop)
+  - Ensure Docker Desktop is running before proceeding
+
+### Running the Application
+1. Clone this repository to your local machine
+2. Navigate to the project directory
+3. Rename `.env.example` to `.env`:
+   ```bash
+   mv .env.example .env
+   ```
+4. Start the application using Docker Compose:
+   ```bash
+   docker-compose up
+   ```
+
+### Stopping the Application
+To stop the application, press `Ctrl+C` in the terminal or run:
+```bash
+docker-compose down
+```
+
 ## Key Features
 
 ### Point of Sale (POS)
@@ -56,10 +81,6 @@ This repository contains the release notes and documentation for all versions of
 
 ## Support
 For technical support, feature requests, or bug reports, please contact our support team at [support contact information].
-
-## License
-[Specify your license information here]
-
 ---
 
 *Talisia POS - Empowering your business with smart retail solutions* 

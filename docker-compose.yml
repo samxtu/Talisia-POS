@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  api:
+    image: samxtu/talisia-api:latest
+    env_file: ./.env
+    ports:
+      - "${HTTPS_PORT:-5823}:5823"
+      - "${API_HTTPS_PORT:-443}:443"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_TYPE=${DB_TYPE}
+      - COOKIE_NAME=${COOKIE_NAME}
+      - CUSTOM_SECRET=${CUSTOM_SECRET}
+      - MY_SENDER_EMAIL=${MY_SENDER_EMAIL}
+      - MY_SENDER_EMAIL_PASSWORD=${MY_SENDER_EMAIL_PASSWORD}
+      - MY_SSL_EMAIL_SERVER=${MY_SSL_EMAIL_SERVER}
+      - FRONT_END_ORIGIN=${FRONTEND_WEB_ORIGIN}
+    volumes:
+      - ./certificates:/usr/app/certificates
+    depends_on:
+      - postgres
+      - redis
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:5823/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  postgres:
+    image: postgres:latest
+    env_file: ./.env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
