@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   api:
@@ -25,19 +25,12 @@ services:
       - postgres
       - redis
     healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://localhost:5823/health",
-        ]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5823/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
+    restart: unless-stopped
 
   postgres:
     image: postgres:latest
@@ -55,6 +48,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
   redis:
     image: redis:alpine
@@ -67,6 +61,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    restart: unless-stopped
 
 volumes:
   postgres_data:
