@@ -30,7 +30,7 @@ services:
       [
         "/bin/sh",
         "-c",
-        "mkdir -p /usr/app/logs && chown -R $(id -u):$(id -g) /usr/app/logs && chmod -R 755 /usr/app/logs && node dist/main",
+        "mkdir -p /usr/app/logs && chown -R $(id -u):$(id -g) /usr/app/logs && chmod -R 755 /usr/app/logs && /usr/app/app",
       ]
     healthcheck:
       test:
