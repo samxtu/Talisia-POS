@@ -20,6 +20,7 @@ services:
       - MY_SSL_EMAIL_SERVER=${MY_SSL_EMAIL_SERVER}
       - FRONT_END_ORIGIN=${FRONTEND_WEB_ORIGIN}
     volumes:
+      - talisia_logs:/usr/app/logs
       - ./certificates:/usr/app/certificates
     depends_on:
       - postgres
@@ -66,3 +67,7 @@ services:
 volumes:
   postgres_data:
   redis_data:
+  talisia_logs:
+    driver: local
+  talisia_certificates:
+    driver: local
