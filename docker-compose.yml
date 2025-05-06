@@ -25,8 +25,13 @@ services:
     depends_on:
       - postgres
       - redis
+    user: root
     entrypoint:
-      ["/bin/sh", "-c", "chmod -R 777 /usr/app/logs && node dist/main"]
+      [
+        "/bin/sh",
+        "-c",
+        "mkdir -p /usr/app/logs && chown -R $(id -u):$(id -g) /usr/app/logs && chmod -R 755 /usr/app/logs && node dist/main",
+      ]
     healthcheck:
       test:
         [
