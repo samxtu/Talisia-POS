@@ -6,7 +6,6 @@ services:
     env_file: ./.env
     ports:
       - "${HTTPS_PORT:-5823}:5823"
-      - "${API_HTTPS_PORT:-443}:443"
     environment:
       - NODE_ENV=${NODE_ENV:-production}
       - POSTGRES_DB=${POSTGRES_DB}
@@ -40,7 +39,7 @@ services:
           "--no-verbose",
           "--tries=1",
           "--spider",
-          "http://localhost:5823/health",
+          "https://localhost:5823/health",
         ]
       interval: 30s
       timeout: 10s
@@ -68,8 +67,6 @@ services:
 
   redis:
     image: redis:alpine
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
     volumes:
       - redis_data:/data
     healthcheck:

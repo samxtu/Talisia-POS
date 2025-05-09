@@ -1,13 +1,13 @@
 # Talisia POS - Point of Sale & Inventory Management System
 
-Talisia POS is a comprehensive desktop application built with Electron that provides a complete solution for retail businesses. It combines point-of-sale functionality with inventory management, employee management, and advanced reporting capabilities.
+Talisia POS is a comprehensive desktop application built with Electron that provides a complete solution for retail businesses. It combines point-of-sale functionality with inventory management, employee management, and advanced reporting capabilities. It also has a mobile companion app for on-the-go operations like reports and inventory monitoring, user management, and more. The mobile app is available for Android only for now. Please see features of the desktop application at the landing website found at [Talisia POS Landing Page](https://talisia-pos.netlify.app)
 
 ## Installation & Setup
 
-### Desktop Application
-1. Download the latest release of Talisia POS desktop application from the [GitHub Releases](https://github.com/your-repo/releases) page
-2. Choose the appropriate installer for your operating system (Windows, macOS, or Linux)
-3. Run the installer and follow the installation wizard
+### Desktop and Mobile (Android for now) Application
+1. Download the latest release of Talisia POS desktop and mobile application from the [GitHub Releases](https://github.com/samxtu/Talisia-POS/releases) page
+2. Choose the appropriate installer for your operating system (Windows and Android only for now)
+3. Run the installers and follow the installation wizard
 
 ### API Setup (Required for Full Functionality)
 The API is required for the desktop application to function properly. Follow these steps to set up the API:
@@ -20,7 +20,7 @@ The API is required for the desktop application to function properly. Follow the
 #### Running the API
 1. Clone this repository to your local machine
 2. Navigate to the project directory
-3. Rename `.env.example` to `.env`:
+3. Rename `.env.example` to `.env` and update the environment variables as needed, change password to something secure:
    ```bash
    mv .env.example .env
    ```
