@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   api:
-    image: samxtu/talisia-api:1.1.0
+    image: samxtu/talisia-api:v1.1.0
     env_file: ./.env
     ports:
       - "${HTTPS_PORT:-5823}:5823"
